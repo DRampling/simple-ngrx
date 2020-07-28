@@ -21,6 +21,17 @@ export interface SchoolManagementState extends EntityState<SchoolManagement> {
   // - selected item
 }
 
+// -----------------------------------------
+// The shape of EntityState
+// ------------------------------------------
+// interface EntityState<SchoolManagement> {
+//   ids: string[] | number[];
+//   entities: { [id: string]: SchoolManagement };
+// }
+// -----------------------------------------
+// -> ids arrays allow us to sort data easily
+// -> entities map allows us to access the data quickly without iterating/filtering though an array of objects
+
 // Custom sorting and indexing can also be injected here, all optional
 export const adapter: EntityAdapter<SchoolManagement> = createEntityAdapter<
   SchoolManagement
@@ -38,10 +49,10 @@ export const initialState: SchoolManagementState = adapter.getInitialState({
 // Initializes the reducer with the initial state and actions
 const schoolManagementReducer = createReducer(
   initialState,
-  // Now we add every action we care about:
+  // Now we add every action we care about that actually touches the store:
   // on [this action], do [this thing] to the adapter
   // - e.g. add all the school management items (sm) to the store
-  on(SchoolManagementActions.loadSchoolManagement, (state, { sm }) =>
+  on(SchoolManagementActions.loadAllSuccess, (state, { sm }) =>
     adapter.addAll(sm, state)
   )
 );
