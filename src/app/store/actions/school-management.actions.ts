@@ -8,7 +8,7 @@ export const loadAll = createAction(
 
 export const loadAllSuccess = createAction(
   '[School/API] Load all success', // this should ALWAYS be UNIQUE
-  props<{ sm: SchoolManagement[] }>()
+  props<{ sms: SchoolManagement[] }>()
 );
 
 // All the school management actions are probably handled the same way
