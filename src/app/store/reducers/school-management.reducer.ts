@@ -52,8 +52,8 @@ const schoolManagementReducer = createReducer(
   // Now we add every action we care about that actually touches the store:
   // on [this action], do [this thing] to the adapter
   // - e.g. add all the school management items (sm) to the store
-  on(SchoolManagementActions.loadAllSuccess, (state, { sm }) =>
-    adapter.addAll(sm, state)
+  on(SchoolManagementActions.loadAllSuccess, (state, { sms }) =>
+    adapter.addAll(sms, state)
   )
 );
 
